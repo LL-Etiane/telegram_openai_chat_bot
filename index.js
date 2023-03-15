@@ -16,7 +16,10 @@ bot.on(message, async(ctx) =>{
     try {
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: ctx.message.text
+            prompt: ctx.message.text,
+            temperature: 0.4,
+            max_tokens: 2000,
+            top_p: 1,
         })
         ctx.reply(completion.data.choices[0].text)
     } catch (error) {
